@@ -63,29 +63,7 @@ def generate_prompt_for_gemma(data_point,mode):
     return text
 
 
-# def generate_zeroshot_prompt_for_gemma(data_point):
-#     """Gen. input text based on a prompt, task instruction, (context info.), and answer
 
-#     :param data_point: dict: Data point
-#     :return: dict: tokenzed prompt
-#     """
-#     # Generate prompt
-#     prefix_text = 'Below is an instruction that describes a task. Write a response that ' \
-#                'appropriately completes the request.\n\n'
-#     text = f"""<start_of_turn>user {prefix_text} {data_point["input"]} <end_of_turn>\n<start_of_turn>model{data_point["instruction"]} <end_of_turn>"""
-#     return text
-
-
-# def load_zeroshot_prompt_data_for_gemma(TRAIN_SET,EOS_TOKEN):
-#     raw_df = pd.read_csv(TRAIN_SET)
-#     df = raw_df[['Narrative', 'jk_nec_features', 'jk_pneumatosis', 'jk_pvg','jk_freeair', 'notes']]
-#     df = pre_process_narrative(df)
-#     df['input'] =  df['Narrative'].apply(lambda x: generate_input(x))  
-#     df['instruction'] =  generate_instruction()
-#     results = df[['input','instruction','jk_nec_features', 'jk_pneumatosis', 'jk_pvg','jk_freeair']]
-#     results['prompt'] = results.apply(lambda row: generate_zeroshot_prompt_for_gemma(row), axis=1)
-#     results['prompt'] = results['prompt'].apply(lambda x: x + EOS_TOKEN)
-#     return results
 
 
 def load_train_data_for_gemma(TRAIN_SET,EOS_TOKEN,mode):
