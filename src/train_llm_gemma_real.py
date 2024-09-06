@@ -64,39 +64,6 @@ def generate_prompt_for_gemma(data_point, mode):
     
     return text
 
-# def generate_input(input):
-#     prompt = f"""Q: This is a pediatric radiology report: {input}"""
-#     prompt += '(1) Does the child have necrotizing enterocolitis? A. Yes; B. No; C. Uncertain'
-#     prompt += '(2) Does the child have pneumatosis? A. Yes; B. No; C. Uncertain'
-#     prompt += '(3) Does the child have portal venous gas? A. Yes; B. No; C. Uncertain'
-#     prompt += '(4) Does the child have free air? A. Yes; B. No; C. Uncertain'
-#     return prompt
-
-# def generate_instruction():
-#     return 'Please answer the four numbered questions. Write answer using A/B/C in between <answer></answer>.'
-
-# def get_ans(x):
-#     if x == 1:
-#         return 'A. Yes'
-#     elif x == 2:
-#         return 'C. Uncertain'
-#     elif x == 0:
-#         return 'B. No'
-
-# def generate_prompt_for_gemma(data_point,mode):
-
-#     # Generate prompt
-#     prefix_text = 'Below is an instruction that describes a task. Write a response that ' \
-#                'appropriately completes the request.\n\n'
-    
-#     if mode == 'train' or mode == 'eval':
-#         text = f"""<start_of_turn>user {prefix_text} {data_point["instruction"]} here are the inputs {data_point["input"]} <end_of_turn>\n<start_of_turn>model{data_point["output"]} <end_of_turn>"""
-
-#     elif mode == 'test':
-#         text = f"""<start_of_turn>user {prefix_text} {data_point["instruction"]} here are the inputs {data_point["input"]} <end_of_turn>\n"""
-#     return text
-
-
 
 def load_train_data_for_gemma(TRAIN_SET,EOS_TOKEN,mode,test_size = 1,random_state = 42):
     raw_df = pd.read_csv(TRAIN_SET)
@@ -145,10 +112,10 @@ def main():
     parser.add_argument('--model_name', type = str, default = "unsloth/gemma-7b-it-bnb-4bit", help = 'model_name')
     parser.add_argument('--epoch', type = int, default = 2, help = 'epoch')
     parser.add_argument('--lr',type = float, default = 2e-4, help = 'learning rate')
-    parser.add_argument('--save_dir',  type = str, default = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/outputs/gemma7b/')
-    parser.add_argument('--train_set',  type = str, default = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/data/include_uncertain/df_train_imp.csv')
-    parser.add_argument('--test_set',  type = str, default = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/data/include_uncertain/df_test_imp.csv')
-    parser.add_argument('--checkpoint',  type = str, default = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/include_uncertain/checkpoint')
+    parser.add_argument('--save_dir',  type = str)
+    parser.add_argument('--train_set',  type = str)
+    parser.add_argument('--test_set',  type = str)
+    parser.add_argument('--checkpoint',  type = str)
     # --inference to default to False and only be True when explicitly specified:
     parser.add_argument('--inference', action='store_true', help='Toggle inference mode on')
     parser.add_argument('--test_size',  type = float, default = 1.0)
