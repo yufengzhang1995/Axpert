@@ -16,7 +16,3 @@ class AXRDataset(Dataset):
         prompt_text = self.data.iloc[idx]['prompt']
         
         return {'input': input_text, 'output': output_text, 'instruction': instruction_text, 'prompt': prompt_text}
-
-# TRAIN_SET = '/nfs/turbo/umms-jkohne/AXR/Processed/train_clinical_report_300.csv'
-# train_df = load_exp_data(TRAIN_SET,EOS_TOKEN)
-# train_dataset = AXRDataset(train_df)
