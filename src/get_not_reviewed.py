@@ -12,13 +12,13 @@ def load_train_data_for_gemma(TRAIN_SET,test_size = None):
         return train_df, test_df
 
 print('loading training data.....')
-TRAIN_SET = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/data/include_uncertain/df_train_imp.csv'
+
 
 test_size_ls = [0.2,0.4,0.6,0.8]
 for test_size in test_size_ls:
     LLM_ready2review_df,LLM_sstrain_df = load_train_data_for_gemma(TRAIN_SET,test_size = test_size)
     print('The ready data for LLM is:',LLM_ready2review_df.shape[0])
     print('The data for training is: ', LLM_sstrain_df.shape[0])
-    LLM_ready2review_df.to_csv(os.path.join('/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/data',f'LLM_ready2review_df_{test_size}.csv'))
-    LLM_ready2review_df.to_csv(os.path.join('/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/data',f'LLM_sstrain_df_{test_size}.csv'))
+    LLM_ready2review_df.to_csv(f'LLM_ready2review_df_{test_size}.csv')
+    LLM_ready2review_df.to_csv(f'LLM_sstrain_df_{test_size}.csv')
 
