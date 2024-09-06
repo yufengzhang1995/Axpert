@@ -46,7 +46,7 @@ def find_file_recursively(root_dir):
     return path_ls
 
 # Root directory and target file name
-root_directory = '/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8'
+root_directory = 
 file_paths = find_file_recursively(root_directory)
 print(file_paths)
 
@@ -65,14 +65,3 @@ for path in file_paths:
         print(f"Error reading {path}: {e}")
     
 
-
-# path = '/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8/not_reviewed_data_gemma-7b-it-bnb-4bit_epoch10_lr0.0002.csv'
-
-
-# df = pd.read_csv(path,index_col = 0)
-# df['Narrative'] = df['prompt'].apply(lambda x: extract_input(x))
-# df[['nec_features', 'pneumatosis', 'pvg', 'freeair']] = df['pred'].apply(lambda x: pd.Series(process_answers(x)))
-# print(df.shape)
-# print(df.columns)
-# df.to_csv(path)
-# print(path)
