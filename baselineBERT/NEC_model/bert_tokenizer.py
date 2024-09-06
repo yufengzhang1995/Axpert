@@ -24,17 +24,6 @@ def get_impressions_from_csv(path):
         imp = imp.str.strip()
         df['impression'] = imp
         return imp,df
-        
-
-
-# def get_impressions_from_csv(path):	
-#         df = pd.read_csv(path)
-#         imp = df['Narrative'].apply(lambda x: extract_impression_or_findings(x))
-#         imp = imp.str.strip()
-#         imp = imp.replace('\n',' ', regex=True)
-#         imp = imp.replace('\s+', ' ', regex=True)
-#         imp = imp.str.strip()
-#         return imp
 
 def tokenize(impressions, tokenizer):
         new_impressions = []
@@ -83,14 +72,3 @@ if __name__ == "__main__":
     with open(out_path, 'w') as filehandle:
             json.dump(new_impressions, filehandle)
             
-            
-# python bert_tokenizer.py -d '/nfs/turbo/umms-jkohne/Code_developlement/data/df_test.csv' \
-#         -ojson '/nfs/turbo/umms-jkohne/Code_developlement/data/df_test.json' \
-#         -odf  '/nfs/turbo/umms-jkohne/Code_developlement/data/df_test_imp.csv' \
-                
-# python bert_tokenizer.py -d '/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8/not_reviewed_data_gemma-7b-it-bnb-4bit_epoch10_lr0.0002.csv' -o '/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8/not_reviewed_data_gemma-7b-it-bnb-4bit_epoch10_lr0.0002.json'
-# python bert_tokenizer.py -d '/nfs/turbo/umms-jkohne/Code_developlement/data/df_val.csv' -o '/nfs/turbo/umms-jkohne/Code_developlement/data/df_val.json'
-            
-# python bert_tokenizer.py -d'/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8/not_reviewed_data_gemma-7b-it-bnb-4bit_epoch10_lr0.0002.csv' \
-        # -odf '/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8/not_reviewed_data_gemma-7b-it-bnb-4bit_epoch10_lr0.0002.json' \
-        # -ojson '/nfs/turbo/umms-jkohne/Code_developlement/data/instruct/gemma7b_0.8/not_reviewed_data_gemma-7b-it-bnb-4bit_epoch10_lr0.0002.json' \
