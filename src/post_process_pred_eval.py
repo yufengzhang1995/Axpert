@@ -52,9 +52,6 @@ def compute_metrics(y_true, y_pred, cls = 'pos'):
         accuracy = accuracy_score(y_true, y_pred)
     return f1,recall,precision,accuracy
             
-FILE_PATH = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/pred_outputs/gemma2b/include_uncertain'
-METRIC_PATH = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/metrics/gemma2b/include_uncertain'
-
 test_size =  [1.0] # 0.2,0.4,0.6,0.8,
 for rs in [0,1,2]:
     for ts in test_size:
