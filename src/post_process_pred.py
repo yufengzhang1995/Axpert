@@ -27,19 +27,10 @@ def process_answers(text):
     return num_list
 
 
-FILE_PATH = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/outputs/mistral/include_uncertain'
-SAVE_PATH = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/pred_outputs/mistral/include_uncertain'
-TEST = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/data/include_uncertain/df_test_imp.csv'
-# TEST = '/nfs/turbo/med-kayvan-lab/Projects/ARDS/Code/Yufeng/CXR/LLM/LLM_infer_data/LLM_ready2review_df_0.6.csv'
-test_df = pd.read_csv(TEST)
-test_df = test_df[['PatientID','MRN','AccessionNumber','nec_features', 'pneumatosis', 'pvg','freeair']]
-test_df = test_df.fillna(0)
-test_pat_name = set(test_df.MRN)
-print('The test file:',test_df.shape)
 
-# test_size =  [0.4,0.5,0.6,0.7,0.8,0.9]
-# test_size =  [0.2,0.4,0.6,0.8,1.0]
-test_size =  [1.0]
+
+test_size =  [0.4,0.5,0.6,0.7,0.8,0.9]
+
 
 for rs in [0,1,2]:
     for ts in test_size:
